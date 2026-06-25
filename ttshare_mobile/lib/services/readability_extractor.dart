@@ -56,12 +56,8 @@ class ReadabilityExtractor {
 
           if (!completer.isCompleted) {
             final jsonStr = result ?? '{"error":"empty result"}';
-            // The result is a JSON string inside a JS string; the evaluate
-            // returns the string value directly
-            final decoded = jsonStr;
-            if (decoded.startsWith('{')) {
-              // Already a JSON string, let caller parse
-              completer.complete({'raw': decoded});
+            if (jsonStr.startsWith('{')) {
+              completer.complete({'raw': jsonStr});
             } else {
               completer.complete({'error': 'unexpected result format'});
             }

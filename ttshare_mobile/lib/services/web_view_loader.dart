@@ -29,7 +29,6 @@ class WebViewLoader {
         headers: cookieData != null ? {'Cookie': cookieData} : null,
       ),
       onLoadStop: (controller, url) async {
-        // Wait for JS rendering to settle
         await Future.delayed(const Duration(seconds: 2));
         final html = await controller.evaluateJavascript(
           source: 'document.documentElement.outerHTML',
