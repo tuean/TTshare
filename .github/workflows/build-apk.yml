@@ -5,7 +5,7 @@ on:
     branches: [ttshare-mobile, main, master]
     paths:
       - 'ttshare_mobile/**'
-  workflow_dispatch:  # 可手动触发
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,6 +22,27 @@ jobs:
         with:
           channel: 'stable'
           flutter-version: '3.24.0'
+
+      - name: Generate Android project skeleton
+        run: |
+          # Backup custom files
+          if [ -f android/app/src/main/AndroidManifest.xml ]; then
+            cp android/app/src/main/AndroidManifest.xml /tmp/AndroidManifest.bak
+          fi
+          if [ -f android/app/src/main/kotlin/com/example/ttshare_mobile/MainActivity.kt ]; then
+            cp android/app/src/main/kotlin/com/example/ttshare_mobile/MainActivity.kt /tmp/MainActivity.bak
+          fi
+          # Delete incomplete android dir and regenerate
+          rm -rf android
+          flutter create --platforms=android .
+          # Restore custom files
+          if [ -f /tmp/AndroidManifest.bak ]; then
+            cp /tmp/AndroidManifest.bak android/app/src/main/AndroidManifest.xml
+          fi
+          if [ -f /tmp/MainActivity.bak ]; then
+            mkdir -p android/app/src/main/kotlin/com/example/ttshare_mobile
+            cp /tmp/MainActivity.bak android/app/src/main/kotlin/com/example/ttshare_mobile/MainActivity.kt
+          fi
 
       - name: Download Readability.js
         run: |
