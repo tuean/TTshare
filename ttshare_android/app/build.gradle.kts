@@ -23,6 +23,15 @@ android {
         }
     }
 
+    packaging {
+        resources {
+            merges += "META-INF/LICENSE*"
+            merges += "META-INF/NOTICE*"
+            merges += "META-INF/DEPENDENCIES"
+            merges += "META-INF/ASL2.0"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -51,7 +60,7 @@ dependencies {
     ksp("androidx.room:room-compiler:2.6.1")
 
     // OkHttp (HTTP + WebDAV)
-    implementation("okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     // Jsoup (HTML 解析)
     implementation("org.jsoup:jsoup:1.17.2")

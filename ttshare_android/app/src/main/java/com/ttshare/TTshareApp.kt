@@ -8,6 +8,7 @@ import android.os.Build
 class TTshareApp : Application() {
 
     companion object {
+        const val CHANNEL_ID = "ttshare_channel"
         lateinit var instance: TTshareApp
             private set
     }
@@ -30,9 +31,5 @@ class TTshareApp : Application() {
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(channel)
         }
-    }
-
-    companion object {
-        const val CHANNEL_ID = "ttshare_channel"
     }
 }

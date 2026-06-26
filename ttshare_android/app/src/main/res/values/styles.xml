@@ -2,10 +2,10 @@
 <resources>
     <style name="Theme.TTshare" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorSecondary">@color/secondary</item>
-        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
     </style>
 
     <color name="primary">#1565C0</color>
@@ -15,4 +15,5 @@
     <color name="success">#4CAF50</color>
     <color name="warning">#FF9800</color>
     <color name="error">#F44336</color>
+    <color name="ic_launcher_background">#1565C0</color>
 </resources>
